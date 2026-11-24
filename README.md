@@ -6,14 +6,14 @@
 
 | Skill | 用途 | 状态 |
 |---|---|---|
-| [Decision Model Coach](skills/decision-model-coach/SKILL.md) | 将业务问题转为决策树、期望利润、敏感性及盈亏平衡分析 | V1.1，可使用 |
+| [Decision Model Coach](skills/decision-model-coach/SKILL.md) | 按决策阶段选择需求验证、目标权衡、经济模型、决策树与敏感性分析 | V1.2，可使用 |
 | [X 投诉分析与竞品借鉴](skills/x-complaint-learnings/SKILL.md) | 提取用户原话、迁移路径、竞品对照与 P0–P3 动作 | 原版已收录 |
 
 ## 使用方式
 
-将 `skills/decision-model-coach/` 整个目录复制到所用 Agent 工具支持的技能目录中，然后描述需要分析的业务决策。技能会引导澄清信息、推导参数并生成决策报告。
+将 `skills/decision-model-coach/` 整个目录复制到所用 Agent 工具支持的技能目录中，然后描述需要分析的业务决策。技能会先识别决策阶段与信息缺口，再选择验证实验或定量方法，给出有条件的建议及改变建议的新证据。
 
-本技能为完整指令文件，尚未附带独立计算和绘图脚本。完整执行需要 Agent 环境提供计算、联网检索和图表生成能力；数据不足时应明确说明假设与局限。
+请保留 `references/` 子目录，其中包含早期产品验证实验指引。技能未附带独立计算和绘图脚本；按任务需要使用 Agent 环境的计算、联网检索及图表能力。数据不足时可交付定性建议或验证方案，不强制生成利润、概率树或二维矩阵。
 
 ## 原项目：X-complaint-for-apps
 

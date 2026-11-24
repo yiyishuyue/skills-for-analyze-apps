@@ -1,0 +1,218 @@
+{
+  "meta": {
+    "title": "真实工程案例：管道铺设施工风险应对",
+    "decision_goal": "在公开模型及可行性假设下最小化预期增量成本",
+    "metric": "应对费用加预期延期机会损失与超支",
+    "unit": "百万美元",
+    "horizon": "本工作包的增量决策；机会损失按月计",
+    "higher_is_better": false
+  },
+  "variables": [
+    {
+      "id": "response_cost",
+      "label": "应对费用",
+      "base": 0,
+      "kind": "fixed",
+      "domain": [
+        0,
+        56
+      ],
+      "source": "Dey (2001), Table VI: https://www.researchgate.net/publication/40499031_Decision_support_system_for_risk_management_a_case_study",
+      "source_class": "industry_ref"
+    },
+    {
+      "id": "delay",
+      "label": "失败时延期月数",
+      "base": 0,
+      "kind": "fixed",
+      "domain": [
+        0,
+        12
+      ],
+      "source": "Dey (2001), Table VI: https://www.researchgate.net/publication/40499031_Decision_support_system_for_risk_management_a_case_study",
+      "source_class": "industry_ref"
+    },
+    {
+      "id": "overrun",
+      "label": "失败时直接超支",
+      "base": 0,
+      "kind": "fixed",
+      "domain": [
+        0,
+        22
+      ],
+      "source": "Dey (2001), Table VI: https://www.researchgate.net/publication/40499031_Decision_support_system_for_risk_management_a_case_study",
+      "source_class": "industry_ref"
+    },
+    {
+      "id": "monthly_value",
+      "label": "每延期一月的机会损失",
+      "base": 7.5,
+      "kind": "fixed",
+      "domain": [
+        0,
+        7.5
+      ],
+      "source": "Dey (2001), Table VI: https://www.researchgate.net/publication/40499031_Decision_support_system_for_risk_management_a_case_study",
+      "source_class": "industry_ref",
+      "scan": {
+        "low": 0,
+        "high": 7.5,
+        "source": "Analyst-added structural stress test from zero-loss boundary to published baseline, not a forecast interval"
+      }
+    }
+  ],
+  "options": [
+    {
+      "id": "nothing",
+      "label": "不增加应对措施",
+      "overrides": {
+        "response_cost": 0
+      },
+      "chances": [
+        {
+          "id": "failure",
+          "label": "失败并产生延期/超支",
+          "prob": 0.317,
+          "values": {
+            "delay": 12,
+            "overrun": 22
+          }
+        },
+        {
+          "id": "normal",
+          "label": "未发生所列失败损失",
+          "prob": 0.683,
+          "values": {
+            "delay": 0,
+            "overrun": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "survey",
+      "label": "开展详细勘测",
+      "overrides": {
+        "response_cost": 12
+      },
+      "chances": [
+        {
+          "id": "failure",
+          "label": "失败并产生延期/超支",
+          "prob": 0.158,
+          "values": {
+            "delay": 2,
+            "overrun": 4
+          }
+        },
+        {
+          "id": "normal",
+          "label": "未发生所列失败损失",
+          "prob": 0.842,
+          "values": {
+            "delay": 0,
+            "overrun": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "label": "采用更优技术",
+      "overrides": {
+        "response_cost": 3
+      },
+      "chances": [
+        {
+          "id": "failure",
+          "label": "失败并产生延期/超支",
+          "prob": 0.158,
+          "values": {
+            "delay": 12,
+            "overrun": 22
+          }
+        },
+        {
+          "id": "normal",
+          "label": "未发生所列失败损失",
+          "prob": 0.842,
+          "values": {
+            "delay": 0,
+            "overrun": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "experts",
+      "label": "聘请专家项目团队",
+      "overrides": {
+        "response_cost": 22
+      },
+      "chances": [
+        {
+          "id": "failure",
+          "label": "失败并产生延期/超支",
+          "prob": 0.317,
+          "values": {
+            "delay": 2,
+            "overrun": 4
+          }
+        },
+        {
+          "id": "normal",
+          "label": "未发生所列失败损失",
+          "prob": 0.683,
+          "values": {
+            "delay": 0,
+            "overrun": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "all",
+      "label": "采取全部应对措施",
+      "overrides": {
+        "response_cost": 56
+      },
+      "chances": [
+        {
+          "id": "failure",
+          "label": "失败并产生延期/超支",
+          "prob": 0.05,
+          "values": {
+            "delay": 2,
+            "overrun": 2
+          }
+        },
+        {
+          "id": "normal",
+          "label": "未发生所列失败损失",
+          "prob": 0.95,
+          "values": {
+            "delay": 0,
+            "overrun": 0
+          }
+        }
+      ]
+    }
+  ],
+  "formula": "response_cost + delay * monthly_value + overrun",
+  "sensitivity": {
+    "enabled": true,
+    "steps": 31
+  },
+  "assumptions": [
+    "来源为真实项目的公开事前评估模型，概率与损失来自专家估计，并非本项目实测频率。",
+    "每个方案对应失败/未失败两个互斥情景；同一失败分支内的延期与超支共同发生，不把它们当独立随机变量。",
+    "应对费用两个分支都承担；失败时再加延期机会损失与超支；不含共同且不影响排序的项目本金。",
+    "monthly_value扫描0至7.5是新增压力测试：零损失边界至论文基准；不是论文估计的置信区间或概率分布。",
+    "论文结果有舍入，按原始概率和严重程度重算；不为凑论文舍入数值而修改输入。",
+    "按风险中性的期望成本比较，假定备选方案均可执行；未提供现金预算等硬约束，不构成工程或投资执行批准。"
+  ],
+  "evidence_policy": {
+    "inputs_confirmed": true
+  }
+}

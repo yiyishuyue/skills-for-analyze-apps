@@ -1,0 +1,57 @@
+{
+  "source": "https://www.researchgate.net/publication/40499031_Decision_support_system_for_risk_management_a_case_study",
+  "doi": "10.1108/00251740110399558",
+  "author": "Prasanta Kumar Dey",
+  "year": 2001,
+  "locator": "Table VI, journal page 646; Figure 5, page 644",
+  "unit": "USD million; delay in months",
+  "evidence_type": "Published real-project decision model; probabilities and effects from expert/AHP estimates, not observed outcome frequencies",
+  "monthly_delay_value": 7.5,
+  "alternatives": [
+    {
+      "id": "nothing",
+      "label": "不增加应对措施",
+      "response_cost": 0,
+      "failure_probability": 0.317,
+      "delay": 12,
+      "overrun": 22,
+      "published_emv": 35.5
+    },
+    {
+      "id": "survey",
+      "label": "开展详细勘测",
+      "response_cost": 12,
+      "failure_probability": 0.158,
+      "delay": 2,
+      "overrun": 4,
+      "published_emv": 15
+    },
+    {
+      "id": "technology",
+      "label": "采用更优技术",
+      "response_cost": 3,
+      "failure_probability": 0.158,
+      "delay": 12,
+      "overrun": 22,
+      "published_emv": 21
+    },
+    {
+      "id": "experts",
+      "label": "聘请专家项目团队",
+      "response_cost": 22,
+      "failure_probability": 0.317,
+      "delay": 2,
+      "overrun": 4,
+      "published_emv": 28
+    },
+    {
+      "id": "all",
+      "label": "采取全部应对措施",
+      "response_cost": 56,
+      "failure_probability": 0.05,
+      "delay": 2,
+      "overrun": 2,
+      "published_emv": 56.9
+    }
+  ]
+}

@@ -88,16 +88,16 @@
 |---|---|
 | [skills/social-feedback-research/](skills/social-feedback-research/) | V1.0.0，跨平台升级副本，含取数与人工采样指南 |
 | [skills/x-feedback-insights/](skills/x-feedback-insights/) | 原版 X 反馈抓取与洞察技能及报告模板 |
-| [skills/decision-model-coach/](skills/decision-model-coach/) | V1.2.0 |
+| [skills/decision-model-coach/](skills/decision-model-coach/) | V1.4.1，含可选 Python 计算后端与真实项目模型回放 |
 | [skills/pricing-revenue-coach/](skills/pricing-revenue-coach/) | V1.2.0，含三问入口 |
 
-这些是分析工作流指令包，未附带自动采集、数据清洗、拟合与绘图执行程序。按任务需要使用 Agent 的联网、计算、图表或数据连接能力；缺少能力时应说明并调整交付范围。
+这些技能以分析工作流为主。Decision Model Coach V1.4.1 另附 Python 标准库计算后端，支持平面方案、单层概率情景和显式敏感性扫描，无需 WorkBuddy 账号或在线服务。运行时需保留整个技能目录，并允许执行 Python；仅有聊天能力时不能声称运行了程序。其他技能按任务需要使用 Agent 的联网、计算、图表或数据连接能力，缺少能力时应说明并调整交付范围。
 
 X 反馈分析保留现有 Grok Bot 来源版本，X 取数接口名及 /workspace/ 路径可能需要适配当前环境。跨平台副本按当前环境发现工具和输出路径；没有可用接口时不能声称已抓取。加载技能不会自动安装其他技能或连接外部服务。
 
 ## 能力与验证边界
 
-- 决策建模已完成结构、场景复核与计算算例检查；这不等于真实业务或用户验证完成。
+- 决策建模 V1.4.1：33 项程序回归、6 项兼容检查与 21 项真实项目模型回放检查通过，附 [管道工程概率树与敏感性案例](skills/decision-model-coach/examples/pipeline-risk/case-report.md)、输入和复跑材料。案例检验了单层概率树回溯、五方案成本排序、推荐反转边界及指定错误检测；概率来自项目专家评估，不是观测频率。它不证明递归多阶段树、输入概率真实性或真实用户前瞻效果，详见 [验证记录](skills/decision-model-coach/references/validation-status.md)。
 - 定价分析已做公式算例检查及一例 ZipRecruiter 公开汇总数据回放，能比较转化与收入的取舍；未完整复现其用户级估计和订阅累计收款，也未证明适用于所有产品。
 - X 反馈分析依赖可获得语料及来源核验，社交初筛不替代代表性用户研究或产品实测。
 - 跨平台副本已做结构与流程审阅，未完成各平台真实采集验证；附带的验收场景不是平台可用性证明。

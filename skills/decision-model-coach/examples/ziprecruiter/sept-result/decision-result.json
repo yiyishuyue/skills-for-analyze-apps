@@ -1,0 +1,75 @@
+{
+  "meta_summary": {
+    "title": "ZipRecruiter：公开数据回放 September",
+    "decision_goal": "比较两个指定价格的首购收入，非寻找全局最优价",
+    "metric": "每1000位潜在客户首购收入",
+    "unit": "美元",
+    "horizon": "一次首次购买",
+    "threshold": null,
+    "threshold_label": null,
+    "higher_is_better": true,
+    "formula": "exposures"
+  },
+  "ranking": [
+    {
+      "option_id": "p249",
+      "label": "月价249美元",
+      "emv": 42330.0,
+      "margin": null,
+      "meets_threshold": null,
+      "chances": []
+    },
+    {
+      "option_id": "p99",
+      "label": "月价99美元",
+      "emv": 23760.0,
+      "margin": null,
+      "meets_threshold": null,
+      "chances": []
+    }
+  ],
+  "recommended": {
+    "option_id": "p249",
+    "label": "月价249美元",
+    "emv": 42330.0,
+    "margin": null,
+    "meets_threshold": null
+  },
+  "drivers": [],
+  "switch_points": [],
+  "sens2_grid": null,
+  "assumptions": {
+    "user_data": [],
+    "user_assumption": [
+      "统一比较的潜在客户数（exposures）：归一化基数，不是实际样本数",
+      "来源：https://ungated-research.s3.amazonaws.com/pdf/1777-JPE-2023-1-Personalized_Pricing_and_Consumer_Welfare.pdf",
+      "仅使用公开汇总数据作回放，收入非利润；不重新估计显著性或累计续费收入。",
+      "1000是归一化基数；价格和转化固定为观测值，不假定它们独立随机变化。",
+      "回顾已知结果的两方案比较，非独立盲测；不求全局最优价。"
+    ],
+    "industry_ref": [],
+    "pending": []
+  },
+  "uncertainties": [
+    "未设置 threshold（打正线），结论只有方案排序，缺少「能不能做」的判断"
+  ],
+  "checks": {
+    "prob_sums_ok": true,
+    "formula_ok": true,
+    "options_count": 2,
+    "variables_count": 1
+  },
+  "engine_version": "1.4.1",
+  "input_sha256": "3e76ff085a22966ebd76825c093862022dc0c7f2835999444544a17a21c33b78",
+  "evaluation_kind": "baseline",
+  "score_label": "基准情景值",
+  "candidate_ids": [
+    "p249"
+  ],
+  "recommendation_status": "highest_modeled_score",
+  "limitations": [
+    "计算排名不是市场验证或风险效用判断。",
+    "emv保留为兼容字段，语义见score_label。",
+    "有限网格可能漏掉非单调反转；没有发现反转不代表全域稳健。"
+  ]
+}

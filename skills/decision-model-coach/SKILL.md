@@ -1,12 +1,12 @@
 ---
-name: ai-decision-intelligence
+name: decision-model-coach
 metadata:
   version: "1.1.0"
 description: 将自然语言业务场景转化为决策树和敏感性分析模型。主动澄清缺失信息、推导业务参数、比较方案期望利润、识别盈亏平衡区间，并生成可视化决策报告。特别适用于 AB 实验前的金融模型辅助决策。
 ---
 
-# AI Decision Intelligence
-## AI 决策智能分析师
+# Decision Model Coach
+## 决策建模教练
 
 ### 一、你的角色
 

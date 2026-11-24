@@ -7,6 +7,7 @@
 | Skill | 用途 | 状态 |
 |---|---|---|
 | [AI Decision Intelligence](skills/ai-decision-intelligence/SKILL.md) | 将业务问题转为决策树、期望利润、敏感性及盈亏平衡分析 | V1.1，可使用 |
+| [X 投诉分析与竞品借鉴](skills/x-complaint-learnings/SKILL.md) | 提取用户原话、迁移路径、竞品对照与 P0–P3 动作 | 原版已收录 |
 
 ## 使用方式
 
@@ -18,7 +19,13 @@
 
 原仓库定位：Skill for monitoring and analyzing complaints & public opinion of competing apps.
 
-用于监测与分析竞品 App 的投诉和公众反馈。目前仓库尚未包含该技能的实现文件，后续可作为独立技能加入。
+用于监测与分析竞品 App 的投诉和公众反馈。原版技能已收录于 `skills/x-complaint-learnings/`，包含 `SKILL.md` 和 `templates/report-outline.md`。
+
+## X 投诉分析 Skill 使用方式
+
+将 `skills/x-complaint-learnings/` 整个目录复制到 Agent 的技能目录，保留 `templates/` 子目录。指令保留 Grok Bot 原版内容，其中 X 取数工具、调用方式与 `/workspace/` 输出路径需要运行环境支持或映射到可用工具和目录。
+
+原文件来自此前未合并的 [PR #1](https://github.com/yiyishuyue/X-complaint-for-apps/pull/1)，本次按技能库结构收录，未改写技能正文。
 
 ## 许可证
 
